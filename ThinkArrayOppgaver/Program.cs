@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection.Metadata.Ecma335;
 
 namespace ThinkArrayOppgaver
 {
@@ -18,7 +17,6 @@ namespace ThinkArrayOppgaver
             {
                 if (intArray[i] < intArray[i - 1]) return false;
             }
-
             return true;
         }
     }
