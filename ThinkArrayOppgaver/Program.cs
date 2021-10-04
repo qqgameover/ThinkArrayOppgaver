@@ -23,11 +23,18 @@ namespace ThinkArrayOppgaver
 
         private static string CipherText(string text)
         {
+            char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
             string upperCased = text.ToUpper();
-            var charText = new char[text.Length];
+            var charText = upperCased.ToCharArray();
             for (int i = 0; i < charText.Length; i++)
             {
-                charText[i] = Convert.ToChar(upperCased[i] + 1);
+                for (int j = 0; j < alpha.Length; j++)
+                {
+                    if (charText[i] != alpha[j]) continue;
+                    if (j == 25) continue;
+                    charText[i] = alpha[j + 1];
+                    break;
+                }
             }
             string returnString = new string(charText);
             return returnString;
