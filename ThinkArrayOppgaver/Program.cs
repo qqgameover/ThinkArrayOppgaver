@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ThinkArrayOppgaver
 {
@@ -8,6 +9,7 @@ namespace ThinkArrayOppgaver
         {
             Console.WriteLine(IsSorted());
             Console.WriteLine(CipherText("Hei hvordan har du det"));
+            Console.WriteLine(SuperCipher("Hei hvordan har du det"));
         }
 
         private static bool IsSorted()
@@ -36,7 +38,7 @@ namespace ThinkArrayOppgaver
                     break;
                 }
             }
-
+            Console.WriteLine(charText);
             string fixedText = ReturnCypherToPlain(charText);
             string returnString = new string(charText);
             return returnString;
@@ -55,9 +57,32 @@ namespace ThinkArrayOppgaver
                     break;
                 }
             }
-
             string returnString = new string(cypherText);
             return returnString;
+        }
+
+        private static string SuperCipher(string cipherText)
+        {
+            Random rnd = new Random();
+            char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+            char[] shuffled = alpha.OrderBy(x => rnd.Next()).ToArray();
+            string upperCased = cipherText.ToUpper();
+            char[] charText = upperCased.ToCharArray();
+
+            for (int i = 0; i < charText.Length; i++)
+            {
+                for (int j = 0; j < shuffled.Length; j++)
+                {
+                    if (j == 0) continue;
+                    if (charText[i] != shuffled[j]) continue;
+                    charText[i] = shuffled[j - 1];
+                    break;
+                }
+            }
+
+            string toStringValue = new string(charText);
+            Console.WriteLine(toStringValue);
+            return toStringValue;
         }
     }
 }
