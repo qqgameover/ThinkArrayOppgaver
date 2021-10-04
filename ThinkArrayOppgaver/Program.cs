@@ -36,7 +36,27 @@ namespace ThinkArrayOppgaver
                     break;
                 }
             }
+
+            string fixedText = ReturnCypherToPlain(charText);
             string returnString = new string(charText);
+            return returnString;
+        }
+
+        private static string ReturnCypherToPlain(char[] cypherText)
+        {
+            char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+            for (int i = 0; i < cypherText.Length; i++)
+            {
+                for (int j = 0; j < alpha.Length; j++)
+                {
+                    if(j == 0) continue;
+                    if(cypherText[i] != alpha[j]) continue;
+                    cypherText[i] = alpha[j - 1];
+                    break;
+                }
+            }
+
+            string returnString = new string(cypherText);
             return returnString;
         }
     }
