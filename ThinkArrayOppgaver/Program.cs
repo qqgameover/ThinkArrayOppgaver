@@ -86,8 +86,6 @@ namespace ThinkArrayOppgaver
         }
         private static void FindModeInArray(int[] array)
         {
-            int target = 0;
-            int mostFrequent;
             var mode = array.GroupBy(n => n).OrderByDescending(g => g.Count()).Select(g => g.Key).FirstOrDefault();
             Console.WriteLine(mode);
         }
