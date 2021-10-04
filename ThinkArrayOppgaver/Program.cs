@@ -10,6 +10,7 @@ namespace ThinkArrayOppgaver
             Console.WriteLine(IsSorted());
             Console.WriteLine(CipherText("Hei hvordan har du det"));
             Console.WriteLine(SuperCipher("Hei hvordan har du det"));
+            FindModeInArray(new int[]{ 3, 9, 11, 33, 9, 37, 110, 78, 38, 3, 9});
         }
 
         private static bool IsSorted()
@@ -39,7 +40,7 @@ namespace ThinkArrayOppgaver
                 }
             }
             Console.WriteLine(charText);
-            string fixedText = ReturnCypherToPlain(charText);
+            ReturnCypherToPlain(charText);
             string returnString = new string(charText);
             return returnString;
         }
@@ -82,6 +83,13 @@ namespace ThinkArrayOppgaver
 
             string toStringValue = new string(charText);
             return toStringValue;
+        }
+        private static void FindModeInArray(int[] array)
+        {
+            int target = 0;
+            int mostFrequent;
+            var mode = array.GroupBy(n => n).OrderByDescending(g => g.Count()).Select(g => g.Key).FirstOrDefault();
+            Console.WriteLine(mode);
         }
     }
 }
