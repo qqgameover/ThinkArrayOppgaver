@@ -81,7 +81,6 @@ namespace ThinkArrayOppgaver
             }
 
             string toStringValue = new string(charText);
-            Console.WriteLine(toStringValue);
             return toStringValue;
         }
     }
